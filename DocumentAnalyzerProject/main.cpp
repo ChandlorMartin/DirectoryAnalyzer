@@ -1,11 +1,14 @@
-#include "widget.h"
+#include "selection_view.h"
 
 #include <QApplication>
+#include  "directory_model.h"
+#include "main_window.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Widget w;
-    w.show();
+    DirectoryModel directoryModel;
+    MainWindow mainWindow(&directoryModel);
+    mainWindow.show();
     return a.exec();
 }

@@ -10,20 +10,24 @@ CONFIG += c++17
 
 SOURCES += \
     dirInfo.cpp \
+    directory_model.cpp \
     main.cpp \
     #mainwindow.cpp
-    results.cpp \
-    widget.cpp
+    main_window.cpp \
+    results_view.cpp \
+    selection_view.cpp
 
 HEADERS += \
     #mainwindow.h
     dirInfo.h \
-    results.h \
-    widget.h
+    directory_model.h \
+    main_window.h \
+    results_view.h \
+    selection_view.h
 FORMS += \
     #mainwindow.ui
-    results.ui \
-    widget.ui
+    results_view.ui \
+    selection_view.ui
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

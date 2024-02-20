@@ -1,3 +1,8 @@
+0.1.0.0
+- Added model to represent the selected directory info
+- Implemented MVC using StackedWidget and signals
+- Cleaned up most of the code
+
 0.0.1.0
  - Created the 2 main widgets
  - Got the directory selection button to work
