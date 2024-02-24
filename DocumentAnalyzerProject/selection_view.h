@@ -13,14 +13,18 @@ class SelectionView : public QWidget
     Q_OBJECT
 
 public:
+    // Constructors
     SelectionView(QWidget *parent = nullptr);
+
+   // Others
     void setModel(DirectoryModel *model);
+    void clear();
 
 private:
-    // Layout
+    // Layouts
     QGridLayout *m_grid;
 
-    // Model
+    // Models
     DirectoryModel *m_model;
 
     // Widgets
@@ -29,7 +33,7 @@ private:
     QPushButton *m_selectDirectoryButton;
 
 private slots:
-    void SelectFolder();
+    void selectFolder();
     void updateView();
 
 signals:

@@ -5,7 +5,10 @@
 #include <QString>
 #include <QDir>
 #include <QStringList>
+#include <QThread>
+#include <QThreadPool>
 #include <QList>
+#include <directory_analyzer.h>
 
 class dirInfo
 {
@@ -14,6 +17,7 @@ public:
     dirInfo(const QString &directoryName);
     dirInfo(const dirInfo &other); // Copy constructor
     dirInfo& operator=(const dirInfo &other); // Assignment operator
+
     //~dirInfo();
 
     // Getters

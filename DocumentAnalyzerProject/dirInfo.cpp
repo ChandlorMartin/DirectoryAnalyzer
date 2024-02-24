@@ -35,6 +35,7 @@ dirInfo::dirInfo(const QString &directoryName): m_name(directoryName)
     }
 
     // Get the count of folders
+    this->m_subdirectoryCount ++;
     foreach (QString subdirectoryName, m_subdirectoryList)
     {
         this->m_subdirectoryCount ++;
@@ -128,9 +129,33 @@ void dirInfo::print() const
     }
 }
 
+
 void dirInfo::analyze()
-{
-    QList<dirInfo> dirInfoList;
+{       
+   /* QThreadPool *pool = QThreadPool::globalInstance();
+    int maxThreads = qMin(m_subdirectoryList.size(), pool->maxThreadCount() /  2);
+    int dirsPerThread = dirList.size() / maxThreads;
+
+    for (int i =  0; i < maxThreads; ++i)
+    {
+        QStringList directories;
+
+        for (int j =  0; j < dirsPerThread && (i * dirsPerThread + j) < dirList.size(); ++j)
+        {
+            directories << dirList[i * dirsPerThread + j];
+        }
+
+        DirectoryAnalyzer *directory_analyzer = new DirectoryAnalyzer(directories, &DirectoryModel);
+        connect(directory_analyzer,
+                &DirectoryAnalyzer::resultReady,
+                this,
+                [this](qint64 totalBytes, double totalMegaBytes,  double totalGigaBytes, double totalTeraBytes, double totalFiles, double totalDirectories){totalSize += size;});
+
+        pool->start(directory_analyzer);
+
+    }
+*/
+    /*
 
     if(m_fileCount >= 2)
     {
@@ -164,9 +189,9 @@ void dirInfo::analyze()
         newDir.print();
     }
 
+    */
 
-
-    dirInfoList.clear();
+    //dirInfoList.clear();
 }
 
 dirInfo::dirInfo(const dirInfo &other) {

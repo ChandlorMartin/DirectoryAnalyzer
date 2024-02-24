@@ -19,14 +19,14 @@ SelectionView::SelectionView(QWidget *parent) : QWidget(parent)
     m_selectDirectoryButton= new QPushButton(this);
     m_selectDirectoryButton->setIcon(QIcon(":/images/folder_icon.png"));
     m_selectDirectoryButton->setIconSize(QSize(36,36));
-    connect(m_selectDirectoryButton, &QPushButton::clicked, this, &SelectionView::SelectFolder);
+    connect(m_selectDirectoryButton, &QPushButton::clicked, this, &SelectionView::selectFolder);
 
     // This sets up the analyze button which displays the results view
     m_analyzeButton= new QPushButton("Analyze", this);
     m_analyzeButton->setIconSize(QSize(20,20));
     connect(m_analyzeButton, &QPushButton::clicked, this, &SelectionView::viewResults);
 
-    //  This  adds the widgets to the grid
+    //  This adds the widgets to the grid
     m_grid->addItem(new QSpacerItem(0,  0, QSizePolicy::Expanding, QSizePolicy::Minimum),  0,  1);
     m_grid->addWidget(m_directorySelectionLine,  0,  0,  1,  2);
     m_grid->addWidget(m_selectDirectoryButton,  0,  2,  1,  1,  Qt::AlignTop );
@@ -36,9 +36,33 @@ SelectionView::SelectionView(QWidget *parent) : QWidget(parent)
     m_grid->setRowStretch(0,  0);
     m_grid->setRowStretch(1,  3);
     m_grid->setRowStretch(2,  1);
+
     m_grid->setColumnStretch(0,  2);
     m_grid->setColumnStretch(1,  1);
     m_grid->setColumnStretch(2,  0);
+}
+
+
+void SelectionView::clear()
+{
+    m_directorySelectionLine->setText("");
+}
+
+
+// This opens up a file dialog so that the user can select a directory
+// It then updates the directory name in the model
+void SelectionView::selectFolder()
+{
+    QString directory = QFileDialog::getExistingDirectory(this,
+                                                          tr("Select Directory"),
+                                                          "/home",
+                                                          QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    if (!directory.isEmpty())
+    {
+        m_model->clear();
+        m_model->setDirectoryName(directory);
+    }
 }
 
 
@@ -47,21 +71,6 @@ void SelectionView::setModel(DirectoryModel *model)
 {
     m_model = model;
     connect(m_model, &DirectoryModel::directoryNameChanged, this, &SelectionView::updateView);
-}
-
-
-// This opens up a file dialog so that the user can select a directory
-// It then updates the directory name in the model
-void SelectionView::SelectFolder()
-{
-    QString directory = QFileDialog::getExistingDirectory(this, tr("Select Directory"),
-                                                    "/home", // Start in the home directory
-                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-
-    if (!directory.isEmpty())
-    {
-        m_model->setDirectoryName(directory);
-    }
 }
 
 

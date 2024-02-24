@@ -42,7 +42,7 @@ constexpr auto qt_meta_stringdata_CLASSSelectionViewENDCLASS = QtMocHelpers::str
     "SelectionView",
     "viewResults",
     "",
-    "SelectFolder",
+    "selectFolder",
     "updateView"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
@@ -61,13 +61,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSSelectionViewENDCLASS_t qt_meta
         QT_MOC_LITERAL(0, 13),  // "SelectionView"
         QT_MOC_LITERAL(14, 11),  // "viewResults"
         QT_MOC_LITERAL(26, 0),  // ""
-        QT_MOC_LITERAL(27, 12),  // "SelectFolder"
+        QT_MOC_LITERAL(27, 12),  // "selectFolder"
         QT_MOC_LITERAL(40, 10)   // "updateView"
     },
     "SelectionView",
     "viewResults",
     "",
-    "SelectFolder",
+    "selectFolder",
     "updateView"
 };
 #undef QT_MOC_LITERAL
@@ -115,7 +115,7 @@ Q_CONSTINIT const QMetaObject SelectionView::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<SelectionView, std::true_type>,
         // method 'viewResults'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'SelectFolder'
+        // method 'selectFolder'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateView'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
@@ -130,7 +130,7 @@ void SelectionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         (void)_t;
         switch (_id) {
         case 0: _t->viewResults(); break;
-        case 1: _t->SelectFolder(); break;
+        case 1: _t->selectFolder(); break;
         case 2: _t->updateView(); break;
         default: ;
         }

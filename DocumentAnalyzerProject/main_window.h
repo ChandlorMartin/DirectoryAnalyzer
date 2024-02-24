@@ -13,17 +13,17 @@ class MainWindow : public  QMainWindow
     Q_OBJECT
 
 public:
+    // Constructors
     MainWindow(DirectoryModel *model, QWidget  *parent = nullptr);
 
 private:
-    // Model
+    // Models
     DirectoryModel *m_model;
 
-    // Widget
+    // Widgets
     QStackedWidget *m_stackedWidget;
-    SelectionView *m_selectionView=nullptr;
+    SelectionView *m_selectionView;
     ResultsView *m_resultsView;
-
 
 public slots:
     void showResultsView();

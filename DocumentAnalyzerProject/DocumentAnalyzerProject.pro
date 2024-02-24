@@ -9,7 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    dirInfo.cpp \
+    directory_analyzer.cpp \
     directory_model.cpp \
     main.cpp \
     #mainwindow.cpp
@@ -19,11 +19,12 @@ SOURCES += \
 
 HEADERS += \
     #mainwindow.h
-    dirInfo.h \
+    directory_analyzer.h \
     directory_model.h \
     main_window.h \
     results_view.h \
-    selection_view.h
+    selection_view.h \
+    utility.h
 FORMS += \
     #mainwindow.ui
     results_view.ui \

@@ -5,7 +5,8 @@ MainWindow::MainWindow(DirectoryModel *model, QWidget *parent)
     : QMainWindow(parent), m_model(model)
 {
     setWindowTitle("Directory Analyzer");
-    resize(500,400);
+    setFixedSize(500,400);
+    //resize(500,400);
 
     // This creates a stackedWidget for switching through different views
     m_stackedWidget = new QStackedWidget(this);
@@ -32,8 +33,9 @@ void MainWindow::showResultsView()
 }
 
 
-// This displays the selection view// This displays the selection view
+// This displays the selection view
 void MainWindow::showSelectionPage()
 {
+    m_selectionView->clear();
     m_stackedWidget->setCurrentWidget(m_selectionView);
 }
