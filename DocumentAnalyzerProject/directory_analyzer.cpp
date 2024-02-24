@@ -1,5 +1,6 @@
 #include "directory_analyzer.h"
 
+
 // Constructor
 DirectoryAnalyzer::DirectoryAnalyzer(DirectoryModel *model, const QStringList &directoryPaths) : m_model(model), m_directoryPaths(directoryPaths)
 {
@@ -9,9 +10,9 @@ DirectoryAnalyzer::DirectoryAnalyzer(DirectoryModel *model, const QStringList &d
 // This calculates the size, total number of directories, and the total number of files in the given list of directories
 void DirectoryAnalyzer::run()
 {
-    qint64 totalBytes =  Zero;
-    double totalFiles = Zero;
     double totalDirectories = Zero;
+    double totalFiles = Zero;
+    qint64 totalBytes =  Zero;
 
     foreach (const QString &directoryPath, m_directoryPaths)
     {

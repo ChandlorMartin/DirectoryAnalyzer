@@ -1,16 +1,16 @@
 #include "selection_view.h"
 
+
 SelectionView::SelectionView(QWidget *parent) : QWidget(parent)
 {
     setWindowTitle("Directory Analyzer");
-    resize(500,400);
 
     // This sets up the grid layout
      m_grid = new QGridLayout(this);
 
     // This sets up the line for showing the selected directory
     m_directorySelectionLine = new QLineEdit(this);
-    m_directorySelectionLine->setFont(QFont("Times", 12));
+    m_directorySelectionLine->setFont(QFont("Times", FontSize));
     m_directorySelectionLine->setPlaceholderText("Directory...");
     m_directorySelectionLine->setEnabled(false);
     m_directorySelectionLine->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -18,28 +18,28 @@ SelectionView::SelectionView(QWidget *parent) : QWidget(parent)
     // This sets up the directory selection button which allows the user to select a directory
     m_selectDirectoryButton= new QPushButton(this);
     m_selectDirectoryButton->setIcon(QIcon(":/images/folder_icon.png"));
-    m_selectDirectoryButton->setIconSize(QSize(36,36));
+    m_selectDirectoryButton->setIconSize(QSize(SelectionIconWidth,  SelectionIconHeight));
     connect(m_selectDirectoryButton, &QPushButton::clicked, this, &SelectionView::selectFolder);
 
     // This sets up the analyze button which displays the results view
     m_analyzeButton= new QPushButton("Analyze", this);
-    m_analyzeButton->setIconSize(QSize(20,20));
+    m_analyzeButton->setIconSize(QSize(SelectionIconWidth, SelectionIconHeight));
     connect(m_analyzeButton, &QPushButton::clicked, this, &SelectionView::viewResults);
 
     //  This adds the widgets to the grid
-    m_grid->addItem(new QSpacerItem(0,  0, QSizePolicy::Expanding, QSizePolicy::Minimum),  0,  1);
-    m_grid->addWidget(m_directorySelectionLine,  0,  0,  1,  2);
-    m_grid->addWidget(m_selectDirectoryButton,  0,  2,  1,  1,  Qt::AlignTop );
-    m_grid->addWidget(m_analyzeButton,  1,  0,  1,  1, (Qt::AlignVCenter | Qt::AlignRight));
+    m_grid->addItem(new QSpacerItem(Zero, Zero, QSizePolicy::Expanding, QSizePolicy::Minimum), Zero, One);
+    m_grid->addWidget(m_directorySelectionLine, Zero, Zero, One, Two);
+    m_grid->addWidget(m_selectDirectoryButton, Zero, Two, One, One, Qt::AlignTop );
+    m_grid->addWidget(m_analyzeButton, One, Zero, One, One, (Qt::AlignVCenter | Qt::AlignRight));
 
     // This sets the stretch factors for the rows and columns
-    m_grid->setRowStretch(0,  0);
-    m_grid->setRowStretch(1,  3);
-    m_grid->setRowStretch(2,  1);
+    m_grid->setRowStretch(Zero, Zero);
+    m_grid->setRowStretch(One, Three);
+    m_grid->setRowStretch(Two, One);
 
-    m_grid->setColumnStretch(0,  2);
-    m_grid->setColumnStretch(1,  1);
-    m_grid->setColumnStretch(2,  0);
+    m_grid->setColumnStretch(Zero, Two);
+    m_grid->setColumnStretch(One, One);
+    m_grid->setColumnStretch(Two, Zero);
 }
 
 
@@ -55,7 +55,7 @@ void SelectionView::selectFolder()
 {
     QString directory = QFileDialog::getExistingDirectory(this,
                                                           tr("Select Directory"),
-                                                          "/home",
+                                                          QDir::homePath(),
                                                           QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!directory.isEmpty())

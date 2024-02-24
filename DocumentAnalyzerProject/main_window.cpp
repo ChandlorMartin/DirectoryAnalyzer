@@ -5,8 +5,7 @@ MainWindow::MainWindow(DirectoryModel *model, QWidget *parent)
     : QMainWindow(parent), m_model(model)
 {
     setWindowTitle("Directory Analyzer");
-    setFixedSize(500,400);
-    //resize(500,400);
+    setFixedSize(Width, Height);
 
     // This creates a stackedWidget for switching through different views
     m_stackedWidget = new QStackedWidget(this);

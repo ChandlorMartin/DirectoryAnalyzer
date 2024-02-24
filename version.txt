@@ -1,3 +1,7 @@
+1.0.0.1
+- Cleaned up code
+- Finished utilization of utility.h for enums
+
 1.0.0.0
 - Finished implementation of the result view's back button
 - Added fixed size for the pages

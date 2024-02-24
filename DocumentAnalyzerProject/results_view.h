@@ -1,6 +1,7 @@
 #ifndef RESULTS_VIEW_H
 #define RESULTS_VIEW_H
 
+
 #include <QDir>
 #include <QDirIterator>
 #include <QGridLayout>
@@ -12,45 +13,48 @@
 #include "directory_model.h"
 #include "utility.h"
 
+
 class ResultsView : public QWidget
 {
     Q_OBJECT
 
 public:
+    //constructors
     explicit ResultsView(QWidget *parent = nullptr);
 
+    // Others
     void analyze();
     void goBack();
     void setModel(DirectoryModel *model);
 
 private:
     // Models
-    DirectoryModel *m_model;
+    DirectoryModel *m_model = nullptr;
 
     // Widgets
-    QLabel *m_chosenDirectoryLabel;
-    QLabel *m_chosenDirectoryNameLabel;
-    QLabel *m_totalBytesLabel;
-    QLabel *m_totalBytesValueLabel;
-    QLabel *m_totalFilesLabel;
-    QLabel *m_totalFilesCountLabel;
-    QLabel *m_totalGigabytesLabel;
-    QLabel *m_totalGigabytesValueLabel;
-    QLabel *m_totalKilobytesLabel;
-    QLabel *m_totalKilobytesValueLabel;
-    QLabel *m_totalMegabytesLabel;
-    QLabel *m_totalMegabytesValueLabel;
-    QLabel *m_totalSubdirectoriesLabel;
-    QLabel *m_totalSubdirectoriesCountLabel;
-    QLabel *m_totalTerabytesLabel;
-    QLabel *m_totalTerabytesValueLabel;
-    QPushButton *m_backButton;
+    QLabel *m_chosenDirectoryLabel = nullptr;
+    QLabel *m_chosenDirectoryNameLabel = nullptr;
+    QLabel *m_totalBytesLabel = nullptr;
+    QLabel *m_totalBytesValueLabel = nullptr;
+    QLabel *m_totalFilesLabel = nullptr;
+    QLabel *m_totalFilesCountLabel = nullptr;
+    QLabel *m_totalGigabytesLabel = nullptr;
+    QLabel *m_totalGigabytesValueLabel = nullptr;
+    QLabel *m_totalKilobytesLabel = nullptr;
+    QLabel *m_totalKilobytesValueLabel = nullptr;
+    QLabel *m_totalMegabytesLabel = nullptr;
+    QLabel *m_totalMegabytesValueLabel = nullptr;
+    QLabel *m_totalSubdirectoriesLabel = nullptr;
+    QLabel *m_totalSubdirectoriesCountLabel = nullptr;
+    QLabel *m_totalTerabytesLabel = nullptr;
+    QLabel *m_totalTerabytesValueLabel = nullptr;
+    QPushButton *m_backButton = nullptr;
 
     // Layouts
-    QGridLayout *m_grid;
+    QGridLayout *m_grid = nullptr;
 
     // Members
-    QDir *m_chosenDirectory;
+    QDir *m_chosenDirectory = nullptr;
 
 signals:
     void backClicked();
@@ -59,5 +63,6 @@ private slots:
     void updateView();
     void clear();
 };
+
 
 #endif

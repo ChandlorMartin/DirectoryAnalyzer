@@ -1,16 +1,16 @@
 #include "directory_model.h"
 
-//  Getters
 
-qint64 DirectoryModel::totalBytes() const
-{
-    return m_totalBytes;
-}
-
-
+// Getters
 double DirectoryModel::fileCount() const
 {
     return m_fileCount;
+}
+
+
+double DirectoryModel::subdirectoryCount() const
+{
+    return m_subDirectoryCount;
 }
 
 
@@ -38,9 +38,9 @@ double DirectoryModel::totalTerabytes() const
 }
 
 
-double DirectoryModel::subDirectoryCount() const
+qint64 DirectoryModel::totalBytes() const
 {
-    return m_subDirectoryCount;
+    return m_totalBytes;
 }
 
 
@@ -51,66 +51,6 @@ QString DirectoryModel::directoryName() const
 
 
 // Setters
-void DirectoryModel::setTotalBytes(const qint64 &totalBytes)
-{
-    if(totalBytes != m_totalBytes)
-    {
-        m_totalBytes = totalBytes;
-        emit totalBytesChanged();
-    }
-}
-
-
-void DirectoryModel::setTotalGigabytes(const double &totalGigabytes)
-{
-    if(totalGigabytes != m_totalGigabytes)
-    {
-        m_totalGigabytes = totalGigabytes;
-        emit totalGigabytesChanged();
-    }
-}
-
-
-void DirectoryModel::setTotalKilobytes(const double &totalKilobytes)
-{
-    if(totalKilobytes != m_totalKilobytes)
-    {
-        m_totalKilobytes = totalKilobytes;
-        emit totalKilobytesChanged();
-    }
-}
-
-
-void DirectoryModel::setTotalMegabytes(const double &totalMegabytes)
-{
-    if(totalMegabytes != m_totalMegabytes)
-    {
-        m_totalMegabytes = totalMegabytes;
-        emit totalMegabytesChanged();
-    }
-}
-
-
-void DirectoryModel::setTotalTerabytes(const double &totalTerabytes)
-{
-    if(totalTerabytes != m_totalTerabytes)
-    {
-        m_totalTerabytes = totalTerabytes;
-        emit totalTerabytesChanged();
-    }
-}
-
-
-void DirectoryModel::setSubdirectoryCount(const int &subDirectoryCount)
-{
-    if(subDirectoryCount != m_subDirectoryCount)
-    {
-        m_subDirectoryCount = subDirectoryCount;
-        emit subdirectoryCountChanged();
-    }
-}
-
-
 void DirectoryModel::setDirectoryName(const QString &directoryName)
 {
     if(directoryName != m_directoryName)
@@ -121,26 +61,17 @@ void DirectoryModel::setDirectoryName(const QString &directoryName)
 }
 
 
-void DirectoryModel::setFileCount(const int &fileCount)
-{
-    if(fileCount != m_fileCount)
-    {
-        m_fileCount = fileCount;
-        emit fileCountChanged();
-    }
-}
-
-
 // This adds data to the model
 void DirectoryModel::addData(qint64 totalBytes, double totalKilobytes, double totalMegabytes, double totalGigabytes, double totalTerabytes, double totalFiles, double totalDirectories)
 {
     QMutexLocker locker(&mutex);
-    m_subDirectoryCount += totalDirectories;
+
     m_fileCount += totalFiles;
+    m_subDirectoryCount += totalDirectories;
     m_totalBytes += totalBytes;
+    m_totalGigabytes += totalGigabytes;
     m_totalKilobytes += totalKilobytes;
     m_totalMegabytes += totalMegabytes;
-    m_totalGigabytes += totalGigabytes;
     m_totalTerabytes += totalTerabytes;
 }
 

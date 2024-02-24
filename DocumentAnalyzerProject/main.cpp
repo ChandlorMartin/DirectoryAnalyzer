@@ -1,8 +1,9 @@
+#include <QApplication>
+
+#include "directory_model.h"
+#include "main_window.h"
 #include "selection_view.h"
 
-#include <QApplication>
-#include  "directory_model.h"
-#include "main_window.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,5 +11,6 @@ int main(int argc, char *argv[])
     DirectoryModel directoryModel;
     MainWindow mainWindow(&directoryModel);
     mainWindow.show();
+
     return a.exec();
 }

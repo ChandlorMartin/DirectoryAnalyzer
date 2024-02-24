@@ -1,7 +1,8 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
-enum numbers {
+enum numbers
+{
     Zero = 0,
     One =  1,
     Two = 2,
@@ -13,7 +14,27 @@ enum numbers {
     Eight = 8,
     Nine = 9,
     OneThousandTwentyFour = 1024
+};
 
+
+enum windowDimensions
+{
+    Width = 500,
+    Height = 300
+};
+
+enum fontSizes
+{
+    FontSize = 12
+};
+
+
+enum iconSizes
+{
+    AnalyzeButtonWidth = 20,
+    AnalyzeButtonHeight = 20,
+    SelectionIconWidth = 36,
+    SelectionIconHeight = 36
 };
 
 #endif

@@ -3,7 +3,6 @@
 ResultsView::ResultsView(QWidget *parent) : QWidget(parent)
 {
     setWindowTitle("Directory Analyzer");
-    resize(500,400);
 
     // This sets up the grid layout
     m_grid = new QGridLayout(this);
@@ -144,11 +143,11 @@ void ResultsView::setModel(DirectoryModel *model)
 void ResultsView::updateView()
 {
     m_chosenDirectoryNameLabel->setText(m_model->directoryName());
-    m_totalSubdirectoriesCountLabel->setText(QString::number(m_model->subDirectoryCount()));
+    m_totalSubdirectoriesCountLabel->setText(QString::number(m_model->subdirectoryCount()));
     m_totalFilesCountLabel  ->setText(QString::number(m_model->fileCount()));
-    m_totalBytesValueLabel->setText(QString::number(m_model->totalBytes()));
-    m_totalKilobytesValueLabel->setText(QString::number(m_model->totalKilobytes()));
-    m_totalMegabytesValueLabel->setText(QString::number(m_model->totalMegabytes()));
-    m_totalGigabytesValueLabel->setText(QString::number(m_model->totalGigabytes()));
-    m_totalTerabytesValueLabel->setText(QString::number(m_model->totalTerabytes()));
+    m_totalBytesValueLabel->setText(QString::number(m_model->totalBytes()) + " B");
+    m_totalGigabytesValueLabel->setText(QString::number(m_model->totalGigabytes()) + " GB");
+    m_totalKilobytesValueLabel->setText(QString::number(m_model->totalKilobytes()) + " kB");
+    m_totalMegabytesValueLabel->setText(QString::number(m_model->totalMegabytes()) + " MB");
+    m_totalTerabytesValueLabel->setText(QString::number(m_model->totalTerabytes()) + " TB");
 }
